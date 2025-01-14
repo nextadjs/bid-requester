@@ -1,0 +1,23 @@
+{
+  "name": "@nextad/bid-requester",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest",
+    "builder": "tsup"
+  },
+  "keywords": [],
+  "author": "Kai Miyamoto",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nextadjs/bid-requester.git"
+  },
+  "homepage": "https://github.com/nextadjs/bid-requester.git",
+  "devDependencies": {
+    "@types/node": "^22.10.6",
+    "tsup": "^8.3.5",
+    "vitest": "^2.1.8"
+  }
+}
