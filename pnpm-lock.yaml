@@ -7,7 +7,14 @@ settings:
 importers:
 
   .:
+    dependencies:
+      iab-openrtb:
+        specifier: ^0.4.1
+        version: 0.4.1
     devDependencies:
+      '@nextad/faker':
+        specifier: ^0.6.4
+        version: 0.6.4
       '@types/node':
         specifier: ^22.10.6
         version: 22.10.6
@@ -330,6 +337,12 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
+  '@nextad/builder@0.1.4':
+    resolution: {integrity: sha512-tRDxslya4jkH5Z/oRo0lJJnmwctmhgMPtX+g99fkvUS3xRtlggv1EitSsu5Rb4Kw57AMltZBVxeG0jcvRdhB4A==}
+
+  '@nextad/faker@0.6.4':
+    resolution: {integrity: sha512-/EtrgsCoworcgewcyAiS1e6ayLPRQ+d8LzYduuDrYf4TLGLFNEXZfE5CNs17YT+YkDgLd9GiO2BEJE+ykm8wng==}
+
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
@@ -597,6 +610,22 @@ packages:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
     hasBin: true
 
+  iab-adcom@0.2.6:
+    resolution: {integrity: sha512-XI+50EIeQxN6QiTN2ZtO2pNIXuXOAboiIudmEC38jKvzrrIMYn11YetPVIgYMDIsHa3EkZPHUqCKtvPsBZRpyw==}
+    engines: {node: '>=14.0.0'}
+
+  iab-native@0.5.2:
+    resolution: {integrity: sha512-D+vEsxyUXEyRdsmxyBSqrdImHSQE0ZvgqugRRs4l2kTV6Iym8g4prZcyjDiqJzP0KCNCPl0aU34TbgGcSgzxrg==}
+    engines: {node: '>=14.0.0'}
+
+  iab-openrtb@0.3.10:
+    resolution: {integrity: sha512-DBMW+l/vwQU/ZojO/AaVox5Bx8MSIAscMObLy6WbYZ0UEiRTlOQQ0ZnaMjOXxx6E7fnEOWO4VYEkt9AkKo4zDg==}
+    engines: {node: '>=14.0.0'}
+
+  iab-openrtb@0.4.1:
+    resolution: {integrity: sha512-3DIryEsRtjZ8WBL44ci0nsaEQCQwIROyh1u+4PqS3FoqaNfkk5fmi1nuAOXR0KJ7gd6tV4PAg5UxyABQBVbXqQ==}
+    engines: {node: '>=14.0.0'}
+
   is-fullwidth-code-point@3.0.0:
     resolution: {integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==}
     engines: {node: '>=8'}
@@ -835,6 +864,10 @@ packages:
 
   undici-types@6.20.0:
     resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
+
+  uuid@11.0.5:
+    resolution: {integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==}
+    hasBin: true
 
   vite-node@2.1.8:
     resolution: {integrity: sha512-uPAwSr57kYjAUux+8E2j0q0Fxpn8M9VoyfGiRI8Kfktz9NcYMCenwY5RnZxnF1WTu3TGiYipirIzacLL3VVGFg==}
@@ -1092,6 +1125,19 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  '@nextad/builder@0.1.4':
+    dependencies:
+      iab-openrtb: 0.3.10
+      uuid: 11.0.5
+
+  '@nextad/faker@0.6.4':
+    dependencies:
+      '@nextad/builder': 0.1.4
+      iab-adcom: 0.2.6
+      iab-native: 0.5.2
+      iab-openrtb: 0.4.1
+      uuid: 11.0.5
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -1351,6 +1397,14 @@ snapshots:
       package-json-from-dist: 1.0.1
       path-scurry: 1.11.1
 
+  iab-adcom@0.2.6: {}
+
+  iab-native@0.5.2: {}
+
+  iab-openrtb@0.3.10: {}
+
+  iab-openrtb@0.4.1: {}
+
   is-fullwidth-code-point@3.0.0: {}
 
   isexe@2.0.0: {}
@@ -1567,6 +1621,8 @@ snapshots:
       - yaml
 
   undici-types@6.20.0: {}
+
+  uuid@11.0.5: {}
 
   vite-node@2.1.8(@types/node@22.10.6):
     dependencies:

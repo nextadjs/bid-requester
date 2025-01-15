@@ -16,8 +16,12 @@
   },
   "homepage": "https://github.com/nextadjs/bid-requester.git",
   "devDependencies": {
+    "@nextad/faker": "^0.6.4",
     "@types/node": "^22.10.6",
     "tsup": "^8.3.5",
     "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "iab-openrtb": "^0.4.1"
   }
 }
