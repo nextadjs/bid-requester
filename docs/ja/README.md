@@ -1,16 +1,16 @@
 # @nextad/bid-requester
 
-Typescript bid requester library compliant with OpenRTB 2.5/2.6/3.0
+OpenRTB version 2.5/2.6/3.0 に準拠した TypeScript 入札リクエスターライブラリ。
 
-## Features
+## 特徴
 
-- 🎯 Full TypeScript type definitions support
-- 📝 Compliant with OpenRTB
-- 🛠️ Support for ESM and CommonJS
-- ⚡ Can be used without instantiation
-- 🧪 Test-friendly interface
+- 🎯 完全な TypeScript 型定義のサポート
+- 📝 OpenRTB 仕様準拠
+- 🛠️ ESM と CommonJS のサポート
+- ⚡ インスタンス化せずに利用可能
+- 🧪 テストに便利なインターフェース
 
-## Installation
+## インストール
 
 npm:
 
@@ -24,9 +24,9 @@ pnpm:
 pnpm add @nextad/bid-requester iab-openrtb
 ```
 
-## Usage
+## 使い方
 
-### Basic Usage
+### 基本的な使い方
 
 ```typescript
 import { bidRequester } from "@nextad/bid-requester";
@@ -51,7 +51,7 @@ const bidResponse = await bidRequester.requestV26(
 );
 ```
 
-### Version specific Bid Requests
+### バージョンごとの入札リクエスト
 
 ```typescript
 const bidResponseV25 = await bidRequester.requestV25(
@@ -68,7 +68,7 @@ const bidResponseV30 = await bidRequester.requestV30(
 );
 ```
 
-### Exception
+### 例外
 
 ```typescript
 import {
@@ -84,14 +84,14 @@ try {
   );
 } catch (error) {
   if (error instanceof InvalidBidRequestException) {
-    // error handling...
+    // エラーハンドリング...
   }
 }
 ```
 
-### Mock
+### モック
 
-Test-friendly interface available
+テストに便利なインターフェースを利用できます。
 
 ```typescript
 import { IBidRequester } from "@nextad/bid-requester";
@@ -99,22 +99,22 @@ import { IBidRequester } from "@nextad/bid-requester";
 const bidRequesterMock = mock<IBidRequester>();
 ```
 
-### Options
+### オプション
 
-If you want to change from OpenRTB recommended data encoding and data format, you can use options.
+OpenRTB が推奨しているデータエンコーディングやデータフォーマット以外に変更したい場合、オプションを使用できます。
 
-Available options:
+用意されているオプション:
 
 ```typescript
 export type BidRequesterOptions = {
-  dataFormat?: string; // Corresponds to Content-Type (defaults to `application/json`)
-  acceptEncoding?: string; // Corresponds to Accept-Encoding (defaults to `gzip`)
-  contentEncoding?: string; // Corresponds to Content-Encoding (default to `gzip`)
-  customHeaders?: Record<string, string>; // Custom Headers (
+  dataFormat?: string; // Content-Typeに該当 (デフォルト値は`application/json`)
+  acceptEncoding?: string; // Accept-Encodingに該当 (デフォルト値は`gzip`)
+  contentEncoding?: string; // Content-Encodingに該当 (デフォルト値は`gzip`)
+  customHeaders?: Record<string, string>; // カスタムヘッダー (通常はトークンなどの認証に利用)
 };
 ```
 
-Usage:
+利用方法:
 
 ```typescript
 import { BidRequester } from "@nextad/bid-requester";
@@ -144,6 +144,6 @@ const bidResponse = await bidRequester.requestV26(
 );
 ```
 
-## License
+## ライセンス
 
 (MIT License)[./LICENSE]
