@@ -1,12 +1,12 @@
 {
   "name": "@nextad/bid-requester",
   "version": "0.1.2",
-  "description": "TypeScript bid requester library for ",
+  "description": "TypeScript bid requester library compliant with OpenRTB 2.5/2.6/3.0",
   "scripts": {
     "test": "vitest",
     "build": "tsup"
   },
-  "keywords": [],
+  "keywords": ["OpenRTB"],
   "author": "Kai Miyamoto",
   "license": "MIT",
   "repository": {
