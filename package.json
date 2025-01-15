@@ -1,8 +1,7 @@
 {
   "name": "@nextad/bid-requester",
   "version": "0.1.1",
-  "description": "",
-  "main": "index.js",
+  "description": "TypeScript bid requester library for ",
   "scripts": {
     "test": "vitest",
     "build": "tsup"
