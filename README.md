@@ -47,7 +47,12 @@ const bidRequest: BidRequest = {
 
 const bidResponse = await bidRequester.requestV26(
   "https://example.com/endpoint",
-  bidRequest
+  bidRequest,
+  {
+    customHeaders: {
+      Token: "auth-token",
+    },
+  }
 );
 ```
 
@@ -120,6 +125,7 @@ Usage:
 import { BidRequester } from "@nextad/bid-requester";
 import { BidRequest, BidResponse } from "iab-openrtb/v26";
 
+// 共通のオプション
 const bidRequester = new BidRequester({
   acceptEncoding: "*",
   contentEncoding: "*",
@@ -138,9 +144,14 @@ const bidRequest: BidRequest = {
   ],
 };
 
+// 固有のオプション
 const bidResponse = await bidRequester.requestV26(
   "https://example.com/endpoint",
-  bidRequest
+  bidRequest,
+  {
+    acceptEncoding: "gzip",
+    contentEncoding: "gzip",
+  }
 );
 ```
 
