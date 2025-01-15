@@ -83,3 +83,5 @@ export class BidRequester implements IBidRequester {
     return openrtbClient.request<Openrtb, Openrtb>(openrtb);
   }
 }
+
+export * from '@/exception';
