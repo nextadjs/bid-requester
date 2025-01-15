@@ -48,8 +48,6 @@ export class OpenRTBClient {
         },
       });
 
-      console.log(httpResponse);
-
       if (httpResponse.status === 200) {
         return httpResponse.json() as Res;
       } else if (httpResponse.status === 204) {

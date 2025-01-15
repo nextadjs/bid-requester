@@ -226,8 +226,8 @@ describe("OpenRTB Client Behavior", () => {
         });
         const bidRequest = openrtbFaker.v26.bidRequest.web().addImp().make();
 
-        expect(
-          async () => await sut.request<BidRequest, BidResponse>(bidRequest)
+        await expect(
+          () => sut.request<BidRequest, BidResponse>(bidRequest)
         ).rejects.toThrow(expectedThrow);
       }
     );
