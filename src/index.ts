@@ -12,13 +12,15 @@ import { OpenRTBClient } from "./OpenRTBClient";
 export interface IBidRequester {
   requestV25(
     endpoint: string,
-    bidRequest: BidRequestV25
+    bidRequest: BidRequestV25,
+    options?: BidRequesterOptions
   ): Promise<BidResponseV25>;
   requestV26(
     endpoint: string,
-    bidRequest: BidRequestV26
+    bidRequest: BidRequestV26,
+    options?: BidRequesterOptions
   ): Promise<BidResponseV26>;
-  requestV30(endpoint: string, openrtb: Openrtb): Promise<Openrtb>;
+  requestV30(endpoint: string, openrtb: Openrtb, options?: BidRequesterOptions): Promise<Openrtb>;
 }
 
 export type BidRequesterOptions = {
@@ -37,15 +39,21 @@ export class BidRequester implements IBidRequester {
 
   public async requestV25(
     endpoint: string,
-    bidRequest: BidRequestV25
+    bidRequest: BidRequestV25,
+    options?: BidRequesterOptions
   ): Promise<BidResponseV25> {
+    options = {
+      ...this.options,
+      ...options,
+    };
+
     const openrtbClient = new OpenRTBClient({
       version: "2.5",
       endpoint: endpoint,
-      dataFormat: this.options.dataFormat,
-      acceptEncoding: this.options.acceptEncoding,
-      contentEncoding: this.options.contentEncoding,
-      customHeaders: this.options.customHeaders,
+      dataFormat: options.dataFormat,
+      acceptEncoding: options.acceptEncoding,
+      contentEncoding: options.contentEncoding,
+      customHeaders: options.customHeaders,
     });
 
     return openrtbClient.request<BidRequestV25, BidResponseV25>(bidRequest);
@@ -53,15 +61,21 @@ export class BidRequester implements IBidRequester {
 
   public async requestV26(
     endpoint: string,
-    bidRequest: BidRequestV26
+    bidRequest: BidRequestV26,
+    options?: BidRequesterOptions
   ): Promise<BidResponseV26> {
+    options = {
+      ...this.options,
+      ...options,
+    };
+
     const openrtbClient = new OpenRTBClient({
       version: "2.6",
       endpoint: endpoint,
-      dataFormat: this.options.dataFormat,
-      acceptEncoding: this.options.acceptEncoding,
-      contentEncoding: this.options.contentEncoding,
-      customHeaders: this.options.customHeaders,
+      dataFormat: options.dataFormat,
+      acceptEncoding: options.acceptEncoding,
+      contentEncoding: options.contentEncoding,
+      customHeaders: options.customHeaders,
     });
 
     return openrtbClient.request<BidRequestV26, BidResponseV26>(bidRequest);
@@ -69,15 +83,21 @@ export class BidRequester implements IBidRequester {
 
   public async requestV30(
     endpoint: string,
-    openrtb: Openrtb
+    openrtb: Openrtb,
+    options?: BidRequesterOptions
   ): Promise<Openrtb> {
+    options = {
+      ...this.options,
+      ...options,
+    };
+
     const openrtbClient = new OpenRTBClient({
       version: "3.0",
       endpoint: endpoint,
-      dataFormat: this.options.dataFormat,
-      acceptEncoding: this.options.acceptEncoding,
-      contentEncoding: this.options.contentEncoding,
-      customHeaders: this.options.customHeaders,
+      dataFormat: options.dataFormat,
+      acceptEncoding: options.acceptEncoding,
+      contentEncoding: options.contentEncoding,
+      customHeaders: options.customHeaders,
     });
 
     return openrtbClient.request<Openrtb, Openrtb>(openrtb);
