@@ -24,5 +24,18 @@
   },
   "dependencies": {
     "iab-openrtb": "^0.4.1"
-  }
+  },
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "./dist",
+    "LICENSE",
+    "README.md"
+  ]
 }
