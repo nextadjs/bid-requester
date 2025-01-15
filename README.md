@@ -146,4 +146,4 @@ const bidResponse = await bidRequester.requestV26(
 
 ## License
 
-(MIT License)[./LICENSE]
+[MIT License](./LICENSE)
