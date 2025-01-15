@@ -125,7 +125,7 @@ Usage:
 import { BidRequester } from "@nextad/bid-requester";
 import { BidRequest, BidResponse } from "iab-openrtb/v26";
 
-// 共通のオプション
+// Common options
 const bidRequester = new BidRequester({
   acceptEncoding: "*",
   contentEncoding: "*",
@@ -144,11 +144,10 @@ const bidRequest: BidRequest = {
   ],
 };
 
-// 固有のオプション
 const bidResponse = await bidRequester.requestV26(
   "https://example.com/endpoint",
   bidRequest,
-  {
+  { // Specific options
     acceptEncoding: "gzip",
     contentEncoding: "gzip",
   }
