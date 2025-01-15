@@ -25,13 +25,13 @@ export type BidRequesterOptions = {
   dataFormat?: string;
   acceptEncoding?: string;
   contentEncoding?: string;
-  customHeaders: Record<string, string>;
+  customHeaders?: Record<string, string>;
 };
 
 export class BidRequester implements IBidRequester {
   private options: BidRequesterOptions;
 
-  public constructor(options: BidRequesterOptions) {
+  public constructor(options: BidRequesterOptions = {}) {
     this.options = options;
   }
 
@@ -85,3 +85,4 @@ export class BidRequester implements IBidRequester {
 }
 
 export * from '@/exception';
+export const bidRequester = new BidRequester();
