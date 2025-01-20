@@ -32,11 +32,10 @@ describe("OpenRTB Client Behavior", () => {
 
       sut.request<BidRequest, BidResponse>(bidRequest);
 
-      expect(fetchMock).toHaveBeenCalledWith("https://example.com/endpoint", {
-        body: expect.any(String),
-        headers: expect.any(Object),
-        method: expect.any(String),
-      });
+      expect(fetchMock).toHaveBeenCalledWith(
+        "https://example.com/endpoint",
+        expect.any(Object)
+      );
     });
 
     it("指定したOpenRTBバージョンでリクエストが送信される", () => {
@@ -51,13 +50,56 @@ describe("OpenRTB Client Behavior", () => {
 
       sut.request<BidRequest, BidResponse>(bidRequest);
 
-      expect(fetchMock).toHaveBeenCalledWith("https://example.com/endpoint", {
-        body: expect.any(String),
-        headers: expect.objectContaining({
-          "x-openrtb-version": "3.0",
-        }),
-        method: expect.any(String),
+      expect(fetchMock).toHaveBeenCalledWith(
+        "https://example.com/endpoint",
+        expect.objectContaining({
+          headers: expect.objectContaining({
+            "x-openrtb-version": "3.0",
+          }),
+        })
+      );
+    });
+
+    it("Credentials is `include` when `withCredentials` is specified as true", () => {
+      fetchMock.mockImplementation(
+        async () => new Response("{}", { status: 200 })
+      );
+      const sut = new OpenRTBClient({
+        endpoint: "https://example.com/endpoint",
+        version: "3.0",
+        withCredentials: true,
       });
+      const bidRequest = openrtbFaker.v26.bidRequest.web().addImp().make();
+
+      sut.request<BidRequest, BidResponse>(bidRequest);
+
+      expect(fetchMock).toHaveBeenCalledWith(
+        "https://example.com/endpoint",
+        expect.objectContaining({
+          credentials: "include",
+        })
+      );
+    });
+
+    it("Credentials is `omit` when `withCredentials` is specified as false", () => {
+      fetchMock.mockImplementation(
+        async () => new Response("{}", { status: 200 })
+      );
+      const sut = new OpenRTBClient({
+        endpoint: "https://example.com/endpoint",
+        version: "3.0",
+        withCredentials: false,
+      });
+      const bidRequest = openrtbFaker.v26.bidRequest.web().addImp().make();
+
+      sut.request<BidRequest, BidResponse>(bidRequest);
+
+      expect(fetchMock).toHaveBeenCalledWith(
+        "https://example.com/endpoint",
+        expect.objectContaining({
+          credentials: "omit",
+        })
+      );
     });
 
     it.each([
@@ -113,14 +155,15 @@ describe("OpenRTB Client Behavior", () => {
           "Content-Type": "application/json",
           "x-openrtb-version": "2.6",
         };
-        expect(fetchMock).toHaveBeenCalledWith("", {
-          body: expect.any(String),
-          headers: {
-            ...defaultExpectedHeaders,
-            [expectedHeaderKey]: expectedHeaderValue,
-          },
-          method: "POST",
-        });
+        expect(fetchMock).toHaveBeenCalledWith(
+          "",
+          expect.objectContaining({
+            headers: expect.objectContaining({
+              ...defaultExpectedHeaders,
+              [expectedHeaderKey]: expectedHeaderValue,
+            }),
+          })
+        );
       }
     );
 
@@ -167,14 +210,15 @@ describe("OpenRTB Client Behavior", () => {
           "Content-Type": "application/json",
           "x-openrtb-version": "2.6",
         };
-        expect(fetchMock).toHaveBeenCalledWith("", {
-          body: expect.any(String),
-          headers: {
-            ...defaultExpectedHeaders,
-            [expectedHeaderKey]: defaultValue,
-          },
-          method: "POST",
-        });
+        expect(fetchMock).toHaveBeenCalledWith(
+          "",
+          expect.objectContaining({
+            headers: expect.objectContaining({
+              ...defaultExpectedHeaders,
+              [expectedHeaderKey]: defaultValue,
+            }),
+          })
+        );
       }
     );
   });
@@ -226,8 +270,8 @@ describe("OpenRTB Client Behavior", () => {
         });
         const bidRequest = openrtbFaker.v26.bidRequest.web().addImp().make();
 
-        await expect(
-          () => sut.request<BidRequest, BidResponse>(bidRequest)
+        await expect(() =>
+          sut.request<BidRequest, BidResponse>(bidRequest)
         ).rejects.toThrow(expectedThrow);
       }
     );

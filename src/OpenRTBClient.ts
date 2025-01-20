@@ -6,12 +6,13 @@ import {
 
 type Settings = {
   endpoint: string;
+  version: string;
   dataFormat?: string;
   acceptEncoding?: string;
   contentEncoding?: string;
   cacheControl?: string;
-  version: string;
   customHeaders?: Record<string, string>;
+  withCredentials?: boolean;
 };
 
 export class OpenRTBClient {
@@ -22,6 +23,7 @@ export class OpenRTBClient {
   private cacheControl: string;
   private version: string;
   private customHeaders?: Record<string, string>;
+  private withCredentials: boolean;
 
   public constructor(settings: Settings) {
     this.endpoint = settings.endpoint;
@@ -31,6 +33,7 @@ export class OpenRTBClient {
     this.cacheControl = settings.cacheControl || "no-store";
     this.version = settings.version;
     this.customHeaders = settings.customHeaders;
+    this.withCredentials = settings.withCredentials === true ? true : false;
   }
 
   public async request<Req, Res>(bidRequest: Req): Promise<Res> {
@@ -38,6 +41,7 @@ export class OpenRTBClient {
       const httpResponse = await fetch(this.endpoint, {
         method: "POST",
         body: JSON.stringify(bidRequest),
+        credentials: this.withCredentials ? 'include' : 'omit',
         headers: {
           ...this.customHeaders,
           "Content-Type": this.dataFormat,

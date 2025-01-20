@@ -28,6 +28,7 @@ export type BidRequesterOptions = {
   acceptEncoding?: string;
   contentEncoding?: string;
   customHeaders?: Record<string, string>;
+  withCredentials?: boolean;
 };
 
 export class BidRequester implements IBidRequester {
@@ -54,6 +55,7 @@ export class BidRequester implements IBidRequester {
       acceptEncoding: options.acceptEncoding,
       contentEncoding: options.contentEncoding,
       customHeaders: options.customHeaders,
+      withCredentials: options.withCredentials,
     });
 
     return openrtbClient.request<BidRequestV25, BidResponseV25>(bidRequest);
@@ -76,6 +78,7 @@ export class BidRequester implements IBidRequester {
       acceptEncoding: options.acceptEncoding,
       contentEncoding: options.contentEncoding,
       customHeaders: options.customHeaders,
+      withCredentials: options.withCredentials,
     });
 
     return openrtbClient.request<BidRequestV26, BidResponseV26>(bidRequest);
@@ -98,6 +101,7 @@ export class BidRequester implements IBidRequester {
       acceptEncoding: options.acceptEncoding,
       contentEncoding: options.contentEncoding,
       customHeaders: options.customHeaders,
+      withCredentials: options.withCredentials,
     });
 
     return openrtbClient.request<Openrtb, Openrtb>(openrtb);
