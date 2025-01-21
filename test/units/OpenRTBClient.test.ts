@@ -7,7 +7,7 @@ import { OpenRTBClient } from "@/OpenRTBClient";
 import { openrtbFaker } from "@nextad/faker";
 import type { BidRequest, BidResponse } from "iab-openrtb/v26";
 
-describe("OpenRTB Client Behavior", () => {
+describe("OpenRTB Client", () => {
   let fetchMock: ReturnType<typeof vi.fn<typeof fetch>>;
 
   beforeEach(() => {
@@ -19,8 +19,8 @@ describe("OpenRTB Client Behavior", () => {
     vi.resetAllMocks();
   });
 
-  describe("リクエスト", () => {
-    it("指定したエンドポイントにリクエストが送信される", () => {
+  describe("When request", () => {
+    it("sends request to specified endpoint", () => {
       fetchMock.mockImplementation(
         async () => new Response("{}", { status: 200 })
       );
@@ -38,7 +38,7 @@ describe("OpenRTB Client Behavior", () => {
       );
     });
 
-    it("指定したOpenRTBバージョンでリクエストが送信される", () => {
+    it("sends request with specified openrtb version", () => {
       fetchMock.mockImplementation(
         async () => new Response("{}", { status: 200 })
       );
@@ -134,7 +134,7 @@ describe("OpenRTB Client Behavior", () => {
         expectedHeaderValue: "123",
       },
     ])(
-      "$keyを指定した場合、指定した$keyでリクエストが送信される",
+      "sends request with specified $key",
       ({ key, value, expectedHeaderKey, expectedHeaderValue }) => {
         fetchMock.mockImplementation(
           async () => new Response("{}", { status: 200 })
@@ -189,7 +189,7 @@ describe("OpenRTB Client Behavior", () => {
         expectedHeaderKey: "Cache-Control",
       },
     ])(
-      "$keyを指定しない場合、$defaultValueでリクエストが送信される",
+      "sends request to default value when $key is not specified",
       ({ key, expectedHeaderKey, defaultValue }) => {
         fetchMock.mockImplementation(
           async () => new Response("{}", { status: 200 })
@@ -223,8 +223,8 @@ describe("OpenRTB Client Behavior", () => {
     );
   });
 
-  describe("レスポンス", () => {
-    it("レスポンスが成功の場合、入札レスポンスがjsonで返される", async () => {
+  describe("When response", () => {
+    it("returns bid response as json when response succeeds", async () => {
       fetchMock.mockImplementation(
         async () => new Response('{"id": "1"}', { status: 200 })
       );
@@ -259,7 +259,7 @@ describe("OpenRTB Client Behavior", () => {
         expectedThrow: UnexpectedError,
       },
     ])(
-      "レスポンスが$nameの場合、$expectedThrowが発生する",
+      "throws $expectedThrow when response is $name",
       async ({ status, expectedThrow, response }) => {
         fetchMock.mockImplementation(
           async () => new Response(response, { status: status })
