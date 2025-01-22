@@ -116,6 +116,7 @@ export type BidRequesterOptions = {
   acceptEncoding?: string; // Accept-Encodingに該当 (デフォルト値は`gzip`)
   contentEncoding?: string; // Content-Encodingに該当 (デフォルト値は`gzip`)
   customHeaders?: Record<string, string>; // カスタムヘッダー (通常はトークンなどの認証に利用)
+  withCredentials?: boolean; // 資格情報 (Cookie, TLSクライアント証明書など)を含めるか
 };
 ```
 

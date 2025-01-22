@@ -115,7 +115,8 @@ export type BidRequesterOptions = {
   dataFormat?: string; // Corresponds to Content-Type (defaults to `application/json`)
   acceptEncoding?: string; // Corresponds to Accept-Encoding (defaults to `gzip`)
   contentEncoding?: string; // Corresponds to Content-Encoding (default to `gzip`)
-  customHeaders?: Record<string, string>; // Custom Headers (
+  customHeaders?: Record<string, string>; // Custom Headers
+  withCredentials?: boolean; // Include authentication credentials (cookies, TLS client certs)
 };
 ```
 
