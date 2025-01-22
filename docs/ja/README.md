@@ -15,13 +15,13 @@ OpenRTB version 2.5/2.6/3.0 に準拠した TypeScript 入札リクエスター�
 npm:
 
 ```
-npm install @nextad/bid-requester iab-openrtb
+npm install @nextad/bid-requester
 ```
 
 pnpm:
 
 ```
-pnpm add @nextad/bid-requester iab-openrtb
+pnpm add @nextad/bid-requester
 ```
 
 ## 使い方

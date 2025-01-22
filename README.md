@@ -15,13 +15,13 @@ Typescript bid requester library compliant with OpenRTB 2.5/2.6/3.0
 npm:
 
 ```
-npm install @nextad/bid-requester iab-openrtb
+npm install @nextad/bid-requester
 ```
 
 pnpm:
 
 ```
-pnpm add @nextad/bid-requester iab-openrtb
+pnpm add @nextad/bid-requester
 ```
 
 ## Usage
