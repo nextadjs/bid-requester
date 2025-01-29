@@ -1,6 +1,6 @@
 {
   "name": "@nextad/bid-requester",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "TypeScript bid requester library compliant with OpenRTB 2.5/2.6/3.0",
   "scripts": {
     "test": "vitest",
