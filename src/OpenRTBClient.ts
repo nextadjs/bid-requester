@@ -42,12 +42,12 @@ export class OpenRTBClient {
         method: "POST",
         body: JSON.stringify(bidRequest),
         headers: {
-          ...this.customHeaders,
           "Content-Type": this.dataFormat,
           "Accept-Encoding": this.acceptEncoding,
           "Content-Encoding": this.contentEncoding,
           "x-openrtb-version": this.version,
           "Cache-Control": this.cacheControl,
+          ...this.customHeaders,
         },
       }; 
 
