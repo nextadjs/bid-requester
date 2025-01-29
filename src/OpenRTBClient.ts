@@ -38,10 +38,9 @@ export class OpenRTBClient {
 
   public async request<Req, Res>(bidRequest: Req): Promise<Res> {
     try {
-      const httpResponse = await fetch(this.endpoint, {
+      let init: any = {
         method: "POST",
         body: JSON.stringify(bidRequest),
-        credentials: this.withCredentials ? 'include' : 'omit',
         headers: {
           ...this.customHeaders,
           "Content-Type": this.dataFormat,
@@ -50,7 +49,13 @@ export class OpenRTBClient {
           "x-openrtb-version": this.version,
           "Cache-Control": this.cacheControl,
         },
-      });
+      }; 
+
+      if (this.withCredentials) {
+        init.credentials = 'include'
+      }
+
+      const httpResponse = await fetch(this.endpoint, init);
 
       if (httpResponse.status === 200) {
         return httpResponse.json() as Res;

@@ -96,8 +96,8 @@ describe("OpenRTB Client", () => {
 
       expect(fetchMock).toHaveBeenCalledWith(
         "https://example.com/endpoint",
-        expect.objectContaining({
-          credentials: "omit",
+        expect.not.objectContaining({
+          credentials: "include",
         })
       );
     });
