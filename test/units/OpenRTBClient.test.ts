@@ -151,7 +151,7 @@ describe("OpenRTB Client", () => {
         const defaultExpectedHeaders = {
           "Accept-Encoding": "gzip",
           "Cache-Control": "no-store",
-          "Content-Encoding": "gzip",
+          "Content-Encoding": "*",
           "Content-Type": "application/json",
           "x-openrtb-version": "2.6",
         };
@@ -206,7 +206,7 @@ describe("OpenRTB Client", () => {
         const defaultExpectedHeaders = {
           "Accept-Encoding": "gzip",
           "Cache-Control": "no-store",
-          "Content-Encoding": "gzip",
+          "Content-Encoding": "*",
           "Content-Type": "application/json",
           "x-openrtb-version": "2.6",
         };
