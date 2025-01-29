@@ -2,7 +2,11 @@ export class InvalidBidRequestException extends Error {
   name = "InvalidBidRequestException";
 
   public constructor(message?: string) {
-    super(message || "Invalid bid request: required parameters are missing or malformed.");
+    super(
+      `Invalid bid request: ${
+        message || "required parameters are missing or malformed."
+      }`
+    );
   }
 }
 
