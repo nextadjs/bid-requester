@@ -62,7 +62,7 @@ export class OpenRTBClient {
       } else if (httpResponse.status === 204) {
         throw new NoBidResponseException();
       } else if (httpResponse.status === 400) {
-        throw new InvalidBidRequestException();
+        throw new InvalidBidRequestException(await httpResponse.text());
       } else {
         throw new UnexpectedError(
           `Unexpected HTTP response: received status code ${httpResponse.status}`
