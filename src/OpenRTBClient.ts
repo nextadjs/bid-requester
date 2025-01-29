@@ -29,7 +29,7 @@ export class OpenRTBClient {
     this.endpoint = settings.endpoint;
     this.dataFormat = settings.dataFormat || "application/json";
     this.acceptEncoding = settings.acceptEncoding || "gzip";
-    this.contentEncoding = settings.contentEncoding || "gzip";
+    this.contentEncoding = settings.contentEncoding || "*";
     this.cacheControl = settings.cacheControl || "no-store";
     this.version = settings.version;
     this.customHeaders = settings.customHeaders;
