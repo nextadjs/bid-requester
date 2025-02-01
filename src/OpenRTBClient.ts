@@ -41,13 +41,13 @@ export class OpenRTBClient {
       let init: any = {
         method: "POST",
         body: JSON.stringify(bidRequest),
+        cache: this.cacheControl,
         headers: {
           ...this.customHeaders,
           "Content-Type": this.dataFormat,
           "Accept-Encoding": this.acceptEncoding,
           "Content-Encoding": this.contentEncoding,
           "x-openrtb-version": this.version,
-          "Cache-Control": this.cacheControl,
         },
       }; 
 
